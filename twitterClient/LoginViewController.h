@@ -1,5 +1,5 @@
 //
-//  testAppDelegate.h
+//  LoginViewController.h
 //  twitterClient
 //
 //  Created by piyush shah on 6/24/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface testAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface LoginViewController : UIViewController
 
 @end
