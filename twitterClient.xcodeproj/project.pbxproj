@@ -122,7 +122,7 @@
 			children = (
 				17BA3F551959FFA300C6B8C7 /* API */,
 				17BA3F62195A299400C6B8C7 /* Views */,
-				17BA3F61195A28A900C6B8C7 /* Categories */,
+				17BA3F61195A28A900C6B8C7 /* Utils */,
 				179A7831195A530200E46E79 /* Models */,
 				17BA3F511959FACF00C6B8C7 /* View Controllers */,
 				17BA3F3C1959FA9A00C6B8C7 /* twitterClientTests */,
@@ -218,13 +218,13 @@
 			path = twitterClient;
 			sourceTree = "<group>";
 		};
-		17BA3F61195A28A900C6B8C7 /* Categories */ = {
+		17BA3F61195A28A900C6B8C7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				17BA3F5E195A289B00C6B8C7 /* NSURL+QueryString.h */,
 				17BA3F5F195A289C00C6B8C7 /* NSURL+QueryString.m */,
 			);
-			name = Categories;
+			name = Utils;
 			path = twitterClient;
 			sourceTree = "<group>";
 		};

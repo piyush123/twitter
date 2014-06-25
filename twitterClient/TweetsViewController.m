@@ -3,7 +3,6 @@
 //  
 //
 //  Created by piyush shah on 6/24/14.
-
 //
 
 #import "TweetsViewController.h"
@@ -12,9 +11,7 @@
 #import "TwitterClient.h"
 #import <UIImageView+AFNetworking.h>
 
-@interface TweetsViewController ()
-
-@property (weak, nonatomic) IBOutlet UIView *view;
+@interface TweetsViewController () 
 
 @property (weak, nonatomic) IBOutlet UITableView *tweetsTable;
 
@@ -34,11 +31,11 @@
         
         TwitterClient *client = [TwitterClient instance];
         [client homeTimelineWithSuccess:^ (AFHTTPRequestOperation *operation, id responseObject){
-            NSLog(@"tweets table view controller");
+            //NSLog(@"tweets table view controller");
             //NSLog(@"response: %@", responseObject);
             self.tweets = responseObject;
             NSLog(@"array count: %d", [self.tweets count]);
-            NSLog(@"%@", self.tweets[1]);
+            //NSLog(@"%@", self.tweets[1]);
             [self.tweetsTable reloadData];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -55,30 +52,36 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
-    [self.tweetsTable dataSource];
-    self.tweetsTable.delegate = self;
+    [self.tweetsTable setDelegate:self];
     
+    self.tweetsTable.rowHeight = 130;
+    
+    self.tweetsTable.dataSource = self;
 
     
     UINib *tweetCellNib = [UINib nibWithNibName:@"tweetCell" bundle:nil];
     
     [self.tweetsTable registerNib:tweetCellNib forCellReuseIdentifier:@"tweetCell"];
     
+    [self.tweetsTable reloadData];
+    
+    
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
+    NSLog(@"RETURNING count %d", self.tweets.count);
     return self.tweets.count;
-    
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@" in cellForRowAtIndexPath" );
     
     TweetCell *tweetCell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell"];
     
-    Tweet *tweet = self.tweets[indexPath.row];
+  //  Tweet *tweet = self.tweets[indexPath.row];
     
   //  [TweetCell setTweet:tweet];
     

@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
-                <outlet property="LoginTableView" destination="i5M-Pr-FkT" id="Dfe-7u-b1r"/>
                 <outlet property="twitterLogin" destination="a0r-Py-9xd" id="6iK-Rm-HGy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
