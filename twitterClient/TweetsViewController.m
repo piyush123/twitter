@@ -51,8 +51,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
-    [self.tweetsTable setDelegate:self];
     
     self.tweetsTable.rowHeight = 130;
     
@@ -63,9 +61,9 @@
     
     [self.tweetsTable registerNib:tweetCellNib forCellReuseIdentifier:@"tweetCell"];
     
-    [self.tweetsTable reloadData];
     
-    
+    [self.tweetsTable setDelegate:self];
+
     
 }
 
@@ -85,15 +83,23 @@
     
   //  [TweetCell setTweet:tweet];
     
+    NSLog(@" the data %@", self.tweets[indexPath.row]);
+    
     self.tweetModel = [MTLJSONAdapter modelOfClass:Tweet.class fromJSONDictionary:self.tweets[indexPath.row] error:NULL];
+   // NSLog(@"got tweetmodel text %@", self.tweetModel.text);
+    
+    NSLog(@"got tweetmodel  %@", self.tweetModel);
     tweetCell.tweetText.text = self.tweetModel.text;
-    tweetCell.retweeted.text = self.tweetModel.retweeted;
-    tweetCell.tweetTime.text = self.tweetModel.created;
-    tweetCell.user.text =  [NSString stringWithFormat:@"%@ @%@", self.tweetModel.name, self.tweetModel.screenname ];
+  //  tweetCell.retweeted.text = self.tweetModel.retweeted;
     
-    NSLog(@"name Label: %@", self.tweetModel.profile_image_url);
+  //  NSLog(@"got tweetmodel retweeted text %@", self.tweetModel.retweeted);
     
-    NSString *imgURL = [self.tweetModel.profile_image_url stringByReplacingOccurrencesOfString:@"_normal" withString:@"_bigger"];
+   
+    tweetCell.user.text =  [NSString stringWithFormat:@"%@ @%@", self.tweetModel.name, self.tweetModel.screenName ];
+    
+    NSLog(@"name Label: %@", self.tweetModel.profileImageURL);
+    
+    NSString *imgURL = [self.tweetModel.profileImageURL stringByReplacingOccurrencesOfString:@"_normal" withString:@"_bigger"];
     
     NSURL   *imageURL   = [NSURL URLWithString:imgURL];
     

@@ -7,12 +7,10 @@
 //
 
 #import "Tweet.h"
-#import <MTLModel.h>//MTLModel
-#import <MTLValueTransformer.h>//MTLModel
 
 @implementation Tweet
 
-//@"retweeted_status.created_at"
+
 + (NSDictionary *) JSONKeyPathsByPropertyKey{
     return @{@"text" : @"text",
              @"retweeted" : @"retweeted_status.entities.user_mentions.name",
@@ -27,13 +25,13 @@
     return [MTLValueTransformer transformerWithBlock:^(NSArray *retweet) {
         if(![retweet count])
         {
-            //NSLog(@"empty");
+            NSLog(@"empty");
             return @"";
         }
         else
         {
             NSString *ret = [retweet objectAtIndex:0];
-            //NSLog(@"%@", ret);
+            NSLog(@"%@", ret);
             return [NSString stringWithFormat:@"Retweeted By %@",ret];
         }
         

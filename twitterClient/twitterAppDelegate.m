@@ -100,8 +100,11 @@
                     
                     TweetsViewController *tweetsViewController = [[TweetsViewController alloc] init];
                     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tweetsViewController];
-                    navigationController.navigationBar.barTintColor = [UIColor lightGrayColor];
                     
+                    navigationController.navigationBar.barTintColor =[UIColor colorWithRed:85/255.0f green:172/255.0f blue:238/255.0f alpha:1.0f];
+                   navigationController.navigationBar.alpha = 0.50;
+                   navigationController.navigationBar.translucent = NO;
+                                     //55acee
                     self.window.rootViewController = navigationController;
                     
                     //} failure:^(AFHTTPRequestOperation *operation, NSError *error){
