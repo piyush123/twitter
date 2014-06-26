@@ -1,31 +1,34 @@
-#RottenTomatoes README
+#Twitter README
 
 ##Creating the Project README
 
 In your project repository, add a file named README.md at the root. Required elements to include in the README for the project (see example):
 
 How many hours did it take to complete?
-~25 hours
+~15 hours
 
 Which required and optional stories have you completed?
 
 Requirements:
 
-Search results page
-*Table rows should be dynamic height according to the content height
-Custom cells should have the proper Auto Layout constraints. Done
+User Stories:
 
-*Search bar should be in the navigation bar (doesn't have to expand to show location like the real Yelp app does). Done
+*User can sign in using OAuth login flow
+*User can view last 20 tweets from their home timeline
+*The current signed in user will be persisted across restarts
+*In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.  In other words, design the custom cell with the proper Auto Layout settings.  You will also need to augment the model classes.
+*User can pull to refresh
+*User can compose a new tweet by tapping on a compose button.
+*User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
+*Optional: When composing, you should have a countdown in the upper right for the tweet limit.
+*Optional: After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
+*Optional: Retweeting and favoriting should increment the retweet and favorite count.
+*Optional: User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
+*Optional: Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
+*Optional: User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
+References For This Assignment:
 
-*Filter page. Unfortunately, not all the filters are supported in the Yelp API.
-The filters you should actually have are: category, sort (best match, distance, highest rated), radius (meters), deals (on/off).
-~implemented has some bugs
-
-The filters table should be organized into sections as in the mock.
-You can use the default UISwitch for on/off states. Optional: implement a custom switch
-Radius filter should expand as in the real Yelp app
-*Categories should show a subset of the full list with a "See All" row to expand. Category list is here: http://www.yelp.com/developers/documentation/category_list
-Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
+Free iOS icons: http://www.glyphish.com/
 
 https://developer.apple.com/library/mac/documentation/security/Conceptual/keychainServConcepts/iPhoneTasks/iPhoneTasks.html
 
