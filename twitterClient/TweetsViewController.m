@@ -63,7 +63,21 @@
     
     
     [self.tweetsTable setDelegate:self];
+    
+    UIBarButtonItem *tweetButton= [[UIBarButtonItem alloc] initWithTitle:@"tweet"
+                                                                    style:UIBarButtonItemStyleDone
+                                                                   target:self
+                                                                   action:@selector(composeTweet)];
+    
+    
+    self.navigationItem.rightBarButtonItem = tweetButton;
+    
 
+    
+}
+
+-(void) composeTweet
+{
     
 }
 
