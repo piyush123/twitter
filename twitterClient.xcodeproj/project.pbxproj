@@ -10,6 +10,8 @@
 		179A7830195A52F200E46E79 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 179A782F195A52F200E46E79 /* User.m */; };
 		179A7834195A533D00E46E79 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 179A7833195A533D00E46E79 /* Tweet.m */; };
 		179A783A195BC8C600E46E79 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 179A7839195BC8C600E46E79 /* ComposeViewController.m */; };
+		179A7840195C75CE00E46E79 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 179A783F195C75CE00E46E79 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		179A7846195C777E00E46E79 /* KeychainHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 179A7845195C777E00E46E79 /* KeychainHandler.m */; };
 		17BA3F1E1959FA9A00C6B8C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17BA3F1D1959FA9A00C6B8C7 /* Foundation.framework */; };
 		17BA3F201959FA9A00C6B8C7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17BA3F1F1959FA9A00C6B8C7 /* CoreGraphics.framework */; };
 		17BA3F221959FA9A00C6B8C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17BA3F211959FA9A00C6B8C7 /* UIKit.framework */; };
@@ -51,6 +53,10 @@
 		179A7833195A533D00E46E79 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		179A7838195BC8C600E46E79 /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		179A7839195BC8C600E46E79 /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		179A783E195C75CE00E46E79 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		179A783F195C75CE00E46E79 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		179A7844195C777E00E46E79 /* KeychainHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainHandler.h; sourceTree = "<group>"; };
+		179A7845195C777E00E46E79 /* KeychainHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainHandler.m; sourceTree = "<group>"; };
 		17BA3F1A1959FA9A00C6B8C7 /* twitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BA3F1D1959FA9A00C6B8C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		17BA3F1F1959FA9A00C6B8C7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -226,7 +232,11 @@
 		17BA3F61195A28A900C6B8C7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				179A783E195C75CE00E46E79 /* KeychainItemWrapper.h */,
+				179A783F195C75CE00E46E79 /* KeychainItemWrapper.m */,
 				17BA3F5E195A289B00C6B8C7 /* NSURL+QueryString.h */,
+				179A7844195C777E00E46E79 /* KeychainHandler.h */,
+				179A7845195C777E00E46E79 /* KeychainHandler.m */,
 				17BA3F5F195A289C00C6B8C7 /* NSURL+QueryString.m */,
 			);
 			name = Utils;
@@ -384,6 +394,8 @@
 				179A783A195BC8C600E46E79 /* ComposeViewController.m in Sources */,
 				17BA3F59195A1FA400C6B8C7 /* TweetsViewController.m in Sources */,
 				17BA3F2E1959FA9A00C6B8C7 /* twitterAppDelegate.m in Sources */,
+				179A7846195C777E00E46E79 /* KeychainHandler.m in Sources */,
+				179A7840195C75CE00E46E79 /* KeychainItemWrapper.m in Sources */,
 				17BA3F2A1959FA9A00C6B8C7 /* main.m in Sources */,
 				17BA3F66195A2C1200C6B8C7 /* tweetCell.m in Sources */,
 				17BA3F60195A289C00C6B8C7 /* NSURL+QueryString.m in Sources */,

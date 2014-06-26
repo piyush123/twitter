@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "TwitterClient.h"
 
+
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *twitterLogin;
 @property (strong, nonatomic) IBOutlet UIView *LoginTableView;
@@ -37,6 +38,9 @@
 - (IBAction)twitterLogin:(id)sender
 {
     [[TwitterClient instance] login];
+    
+    
+    
 }
 - (void)didReceiveMemoryWarning
 {

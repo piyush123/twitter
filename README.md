@@ -28,3 +28,5 @@ Radius filter should expand as in the real Yelp app
 Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
 
 https://developer.apple.com/library/mac/documentation/security/Conceptual/keychainServConcepts/iPhoneTasks/iPhoneTasks.html
+
+http://www.iossnippet.com/tutorials/keychain/how-to-add-username-and-password-to-keychain-in-objective-c-ios/
