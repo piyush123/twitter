@@ -12,6 +12,8 @@
 #import "ComposeViewController.h"
 #import <UIImageView+AFNetworking.h>
 #import <UIRefreshControl+AFNetworking.h>
+#import "DetailTweetViewController.h"
+
 
 @interface TweetsViewController () 
 
@@ -168,7 +170,14 @@
     
 }
 
-
+- (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    DetailTweetViewController *detailTweetViewController = [[DetailTweetViewController alloc] init];
+    detailTweetViewController.tweet = [MTLJSONAdapter modelOfClass:Tweet.class fromJSONDictionary:self.tweets[indexPath.row] error:NULL];
+    [self.navigationController pushViewController:detailTweetViewController animated:YES];
+}
 
 - (void) getTweets
 {
