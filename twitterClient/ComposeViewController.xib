@@ -8,10 +8,8 @@
             <connections>
                 <outlet property="name" destination="ZFh-3T-APa" id="fPZ-NB-Jhh"/>
                 <outlet property="profileImage" destination="H8R-em-Qld" id="Tn2-mn-Q2o"/>
-                <outlet property="saveUpdate" destination="F2P-Dx-KsH" id="6Qd-zF-gRO"/>
                 <outlet property="screenName" destination="z5x-U1-duC" id="SMI-Pf-zTe"/>
                 <outlet property="statusUpdate" destination="2O0-Zi-t1I" id="WdO-h4-T9t"/>
-                <outlet property="tweet" destination="F2P-Dx-KsH" id="Emx-Hi-zqW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -62,12 +60,15 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2P-Dx-KsH">
-                    <rect key="frame" x="237" y="257" width="38" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2P-Dx-KsH">
+                    <rect key="frame" x="187" y="257" width="88" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="tweet">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tweetButton:" destination="-1" eventType="touchUpInside" id="Mbz-O0-EOW"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

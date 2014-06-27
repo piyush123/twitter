@@ -17,9 +17,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *screenName;
 @property (weak, nonatomic) IBOutlet UITextView *statusUpdate;
-@property (weak, nonatomic) IBOutlet UIButton *saveUpdate;
 
-@property (weak, nonatomic) IBOutlet UIButton *tweet;
+
+
+- (IBAction)tweetButton:(id)sender;
+
+
 
 @end
 
@@ -40,8 +43,10 @@
         
        // self.statusUpdate.delegate = self;
         
-        [self.tweet addTarget:self action:@selector(updateStatus:) forControlEvents:UIControlEventTouchUpInside];
+    
         
+        
+       
     }
     return self;
 }
@@ -90,4 +95,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)tweetButton:(id)sender {
+    
+    NSLog(@"status Update");
+    TwitterClient *client = [TwitterClient instance];
+    
+    NSString *update = self.statusUpdate.text;
+    
+    [client updateStatus:update :^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"response: %@", responseObject);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } :^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"response error: %@", error);
+        self.statusUpdate.text = @"Error posting the tweet";
+    }];
+
+}
 @end
