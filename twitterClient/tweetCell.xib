@@ -61,36 +61,36 @@
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHK-jj-c6X">
-                        <rect key="frame" x="70" y="85" width="25" height="25"/>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHK-jj-c6X">
+                        <rect key="frame" x="70" y="85" width="16" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="eoc-Z7-JhG"/>
                             <constraint firstAttribute="width" constant="25" id="fGa-fk-aB7"/>
                         </constraints>
-                        <state key="normal" title="R">
+                        <state key="normal" image="reply_default.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dv-Px-faV">
-                        <rect key="frame" x="116" y="85" width="25" height="25"/>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dv-Px-faV">
+                        <rect key="frame" x="107" y="85" width="29" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="hYe-bJ-xLe"/>
                             <constraint firstAttribute="height" constant="25" id="rsx-8n-rhY"/>
                         </constraints>
-                        <state key="normal" title="R">
+                        <state key="normal" title="R" image="retweet_default.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6u-Sk-xo0">
-                        <rect key="frame" x="162" y="85" width="25" height="25"/>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6u-Sk-xo0">
+                        <rect key="frame" x="153" y="85" width="27" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="Xlc-EF-cHk"/>
                             <constraint firstAttribute="height" constant="25" id="Z8P-Jn-zRc"/>
                         </constraints>
-                        <state key="normal" title="F">
+                        <state key="normal" title="F" image="favorite_default.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
@@ -139,4 +139,9 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="favorite_default.png" width="16" height="16"/>
+        <image name="reply_default.png" width="16" height="16"/>
+        <image name="retweet_default.png" width="16" height="16"/>
+    </resources>
 </document>

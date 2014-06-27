@@ -9,7 +9,9 @@
 #import "tweetCell.h"
 #import "Tweet.h"
 #import "TwitterClient.h"
+#import "ComposeViewController.h"
 #import <UIImageView+AFNetworking.h>
+#import <UIRefreshControl+AFNetworking.h>
 
 @interface TweetsViewController () 
 
@@ -19,6 +21,7 @@
 
 @property (strong, nonatomic) Tweet *tweetModel;
 
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation TweetsViewController
@@ -30,7 +33,7 @@
         // Custom initialization
         
         TwitterClient *client = [TwitterClient instance];
-        [client homeTimelineWithSuccess:^ (AFHTTPRequestOperation *operation, id responseObject){
+        [client homeTimeline:^ (AFHTTPRequestOperation *operation, id responseObject){
             //NSLog(@"tweets table view controller");
             //NSLog(@"response: %@", responseObject);
             self.tweets = responseObject;
@@ -38,7 +41,7 @@
             //NSLog(@"%@", self.tweets[1]);
             [self.tweetsTable reloadData];
             
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        } :^(AFHTTPRequestOperation *operation, NSError *error){
             NSLog(@"response error: %@", error);
         }];
         
@@ -55,7 +58,6 @@
     self.tweetsTable.rowHeight = 130;
     
     self.tweetsTable.dataSource = self;
-
     
     UINib *tweetCellNib = [UINib nibWithNibName:@"tweetCell" bundle:nil];
     
@@ -65,19 +67,44 @@
     [self.tweetsTable setDelegate:self];
     
     UIBarButtonItem *tweetButton= [[UIBarButtonItem alloc] initWithTitle:@"tweet"
-                                                                    style:UIBarButtonItemStyleDone
-                                                                   target:self
-                                                                   action:@selector(composeTweet)];
-    
+            style:UIBarButtonItemStyleDone
+            target:self
+            action:@selector(composeTweet:)];
     
     self.navigationItem.rightBarButtonItem = tweetButton;
+
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    [self.tweetsTable addSubview:self.refreshControl];
     
 
-    
+
 }
 
--(void) composeTweet
-{
+- (void) refreshView:(id)sender{
+    [self getTweets];
+    [(UIRefreshControl *)sender endRefreshing];
+}
+
+
+
+- (void)composeTweet: (id) sender {
+    
+    ComposeViewController *composeViewController = [[ComposeViewController alloc] init];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:composeViewController];
+    
+    navigationController.navigationBar.barTintColor =[UIColor colorWithRed:85/255.0f green:172/255.0f blue:238/255.0f alpha:1.0f];
+    
+    navigationController.navigationBar.alpha = 0.50;
+    
+    navigationController.navigationBar.translucent = NO;
+    
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    
+    [self presentViewController:navigationController animated:YES completion: nil];
+    
     
 }
 
@@ -97,21 +124,21 @@
     
   //  [TweetCell setTweet:tweet];
     
-    NSLog(@" the data %@", self.tweets[indexPath.row]);
+ //   NSLog(@" the data %@", self.tweets[indexPath.row]);
     
     self.tweetModel = [MTLJSONAdapter modelOfClass:Tweet.class fromJSONDictionary:self.tweets[indexPath.row] error:NULL];
    // NSLog(@"got tweetmodel text %@", self.tweetModel.text);
     
-    NSLog(@"got tweetmodel  %@", self.tweetModel);
+ //   NSLog(@"got tweetmodel  %@", self.tweetModel);
     tweetCell.tweetText.text = self.tweetModel.text;
   //  tweetCell.retweeted.text = self.tweetModel.retweeted;
     
   //  NSLog(@"got tweetmodel retweeted text %@", self.tweetModel.retweeted);
     
-   
+    tweetCell.tweetTime.text =  self.tweetModel.created;
     tweetCell.user.text =  [NSString stringWithFormat:@"%@ @%@", self.tweetModel.name, self.tweetModel.screenName ];
     
-    NSLog(@"name Label: %@", self.tweetModel.profileImageURL);
+    NSLog(@"profile url: %@", self.tweetModel.profileImageURL);
     
     NSString *imgURL = [self.tweetModel.profileImageURL stringByReplacingOccurrencesOfString:@"_normal" withString:@"_bigger"];
     
@@ -143,6 +170,24 @@
 
 
 
+- (void) getTweets
+{
+    
+    NSLog(@"getting data from refresh");
+    TwitterClient *client = [TwitterClient instance];
+    [client homeTimeline:^ (AFHTTPRequestOperation *operation, id responseObject){
+        //NSLog(@"tweets table view controller");
+        //NSLog(@"response: %@", responseObject);
+        self.tweets = responseObject;
+        NSLog(@"REFRESH array count: %d", [self.tweets count]);
+        //NSLog(@"%@", self.tweets[1]);
+        [self.tweetsTable reloadData];
+        
+    } :^(AFHTTPRequestOperation *operation, NSError *error){
+        NSLog(@"response error: %@", error);
+    }];
+
+}
 
 - (void)didReceiveMemoryWarning
 {

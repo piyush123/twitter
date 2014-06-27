@@ -13,10 +13,14 @@
 @interface User : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic,strong) NSString  *name;
-@property (nonatomic,strong) NSString  *display_phone;
-@property (nonatomic,strong) NSString *image_url;
+@property (nonatomic,strong) NSString *profile_image_url;
+@property (nonatomic, strong) NSString *screenName;
 
++ (User *)currentUser;
 
++ (void)setCurrentUser:(User *)user;
++ (void)checkCurrentUser:(void (^) ())success
+                             :(void (^) (NSError *error))failure;
 
 
 @end

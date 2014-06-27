@@ -1,13 +1,13 @@
 //
 //  ComposeViewController.h
-//  twitterClient
+//  
 //
-//  Created by piyush shah on 6/25/14.
-//  Copyright (c) 2014 onor inc. All rights reserved.
+//  Created by piyush shah on 6/26/14.
+//
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ComposeViewController : UIViewController
+@interface ComposeViewController : UIViewController 
 
 @end

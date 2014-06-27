@@ -15,7 +15,20 @@
 
 - (void) login;
 
-- (AFHTTPRequestOperation *)homeTimelineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (AFHTTPRequestOperation *)homeTimeline:(void (^)(AFHTTPRequestOperation *operation, id response))success :(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+
+
+- (AFHTTPRequestOperation *)verifyCredentials:(void (^) (AFHTTPRequestOperation *operation, id responseObject))success
+                                                :(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
+
+
+- (void)finishLoginWith:(NSString *)queryString withCompletion:(void (^) ())completion;
+
+
+- (AFHTTPRequestOperation *)updateStatus:(NSString *)status
+                                        :(void (^) (AFHTTPRequestOperation *operation, id responseObject))success
+                                        :(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
 
 
 @end

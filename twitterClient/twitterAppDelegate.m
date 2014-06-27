@@ -72,49 +72,34 @@
 }
 
 
+
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
-{
-    NSLog(@"getting into url");
-    NSLog(@" url scheme %@", url.scheme);
+         annotation:(id)annotation {
     
-    if ([url.scheme isEqualToString:@"piytweetie"])
-    {
-        
-        NSLog(@" got to url");
-        if ([url.host isEqualToString:@"oauth"])
-        {
-            NSLog(@" got to oauth");
-            
+    if ([url.scheme isEqualToString:@"piytweetie"]) {
+        if ([url.host isEqualToString:@"oauth"]) {
             NSDictionary *parameters = [url dictionaryFromQueryString];
-            if (parameters[@"oauth_token"] && parameters[@"oauth_verifier"]){
-                TwitterClient *client = [TwitterClient instance];
-                [client fetchAccessTokenWithPath:@"/oauth/access_token" method:@"POST" requestToken:[BDBOAuthToken tokenWithQueryString:url.query] success:^(BDBOAuthToken *accessToken) {
-                    NSLog(@"access token");
-                    [client.requestSerializer saveAccessToken:accessToken];
-                    
-                    //[client homeTimelineWithSuccess:^ (AFHTTPRequestOperation *operation, id responseObject){
-                    //    NSLog(@"response: %@", responseObject);
-                    
+            if (parameters[@"oauth_token"] && parameters[@"oauth_verifier"]) {
+                [[TwitterClient instance] finishLoginWith:url.query withCompletion:^{
                     TweetsViewController *tweetsViewController = [[TweetsViewController alloc] init];
+                    
                     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tweetsViewController];
                     
+                    //55acee
+                    //
+                    
                     navigationController.navigationBar.barTintColor =[UIColor colorWithRed:85/255.0f green:172/255.0f blue:238/255.0f alpha:1.0f];
-                   navigationController.navigationBar.alpha = 0.50;
-                   navigationController.navigationBar.translucent = NO;
-                                     //55acee
+                    
+                    navigationController.navigationBar.alpha = 0.50;
+                    
+                    navigationController.navigationBar.translucent = NO;
+                    
+                    
                     self.window.rootViewController = navigationController;
                     
-                    //} failure:^(AFHTTPRequestOperation *operation, NSError *error){
-                    //    NSLog(@"response error: %@", error);
-                    //}];
-                    
-                    
-                    
-                } failure:^(NSError *error) {
-                    NSLog(@"no token");
+
                 }];
             }
         }
@@ -122,6 +107,5 @@
     }
     return NO;
 }
-
 
 @end

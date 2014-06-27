@@ -8,7 +8,8 @@
 
 #import "LoginViewController.h"
 #import "TwitterClient.h"
-
+#import "User.h"
+#import "TweetsViewController.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *twitterLogin;
@@ -32,6 +33,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    if ([User currentUser] != nil) {
+        NSLog(@"current user %@", User.currentUser);
+        [User checkCurrentUser:^{
+            TweetsViewController *tweetsViewController =
+            [[TweetsViewController alloc] init];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tweetsViewController];
+            [self presentViewController:navigationController animated:YES completion:nil];
+        } :^(NSError *error) {
+            NSLog(@"don't have user token");
+            [[TwitterClient instance] login];
+        }];
+    }
 
 }
 
