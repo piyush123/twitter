@@ -2,15 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:DetailTweetViewController.h">
-   </FileRef>
-   <FileRef
-      location = "group:DetailTweetViewController.m">
-   </FileRef>
-   <FileRef
-      location = "group:DetailTweetViewController.xib">
-   </FileRef>
-   <FileRef
       location = "group:twitterClient.xcodeproj">
    </FileRef>
    <FileRef

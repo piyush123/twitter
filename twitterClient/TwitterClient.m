@@ -28,7 +28,6 @@
 
 - (void)login{
    
-    
     [self.requestSerializer removeAccessToken]; 
     [self fetchRequestTokenWithPath:@"oauth/request_token"
                              method:@"POST"
@@ -67,11 +66,27 @@
 }
 
 
-- (AFHTTPRequestOperation *)homeTimeline:(void (^) (AFHTTPRequestOperation *operation, id responseObject))success :(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure{
+- (AFHTTPRequestOperation *)homeTimeline:(void (^) (AFHTTPRequestOperation *operation, id responseObject))
+                                success :(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure{
+    
+    
     return [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:success failure:failure];
     
+    // return [self GET:@"1.1/statuses/mentions_timeline.json" parameters:nil success:success failure:failure];
+   
+   // 1.1/statuses/mentions_timeline.json
 }
 
+- (AFHTTPRequestOperation *)mentionsTimeline:(void (^) (AFHTTPRequestOperation *operation,  id responseObject))
+                                success :(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure{
+    
+    
+ //   return [self GET:@"asdf" parameters:nil success:success failure:failure];
+    
+    return [self GET:@"1.1/statuses/mentions_timeline.json" parameters:nil success:success failure:failure];
+    
+    // 1.1/statuses/mentions_timeline.json
+}
 
 
 - (AFHTTPRequestOperation *)verifyCredentials:(void (^) (AFHTTPRequestOperation *operation, id responseObject))success

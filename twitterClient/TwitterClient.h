@@ -17,6 +17,8 @@
 
 - (AFHTTPRequestOperation *)homeTimeline:(void (^)(AFHTTPRequestOperation *operation, id response))success :(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+- (AFHTTPRequestOperation *)mentionsTimeline:(void (^)(AFHTTPRequestOperation *operation, id response))success :(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
 
 
 - (AFHTTPRequestOperation *)verifyCredentials:(void (^) (AFHTTPRequestOperation *operation, id responseObject))success

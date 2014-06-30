@@ -12,6 +12,10 @@
 #import "TweetsViewController.h"
 #import "NSURL+QueryString.h"
 
+#import "containerViewController.h"
+#import "menuViewController.h"
+
+
 @implementation twitterAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -21,21 +25,13 @@
     // Override point for customization after application launch.
     
     
-    self.window.rootViewController = [[LoginViewController alloc] init];
+    //self.window.rootViewController = [[LoginViewController alloc] init];
     
     self.window.backgroundColor = [UIColor whiteColor];
     
     LoginViewController *vc = [[LoginViewController alloc]init];
-    UINavigationController *uvc = [[UINavigationController alloc] initWithRootViewController:vc];
     
-    uvc.navigationBar.barTintColor =[UIColor colorWithRed:5/255.0f green:6/255.0f blue:206/255.0f alpha:1.0f];
-    uvc.navigationBar.alpha = 0.50;
-    uvc.navigationBar.translucent = NO;
-    
-    
-    self.window.rootViewController = uvc;
-    
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = vc;
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -78,26 +74,33 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
     
+    NSLog(@" GETTING REDIRECT");
+    
     if ([url.scheme isEqualToString:@"piytweetie"]) {
         if ([url.host isEqualToString:@"oauth"]) {
             NSDictionary *parameters = [url dictionaryFromQueryString];
             if (parameters[@"oauth_token"] && parameters[@"oauth_verifier"]) {
                 [[TwitterClient instance] finishLoginWith:url.query withCompletion:^{
-                    TweetsViewController *tweetsViewController = [[TweetsViewController alloc] init];
+                    TweetsViewController *tweets_vc = [[TweetsViewController alloc] init];
+                    menuViewController  *menu_vc = [[menuViewController alloc] init];
+                    containerViewController  *container_vc = [[containerViewController alloc] init];
                     
-                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tweetsViewController];
+                    [container_vc addViewController:menu_vc];
+                    [container_vc addViewController:tweets_vc];
+                    
+                    UINavigationController *uvc = [[UINavigationController alloc] initWithRootViewController:container_vc];
+                    
+                    uvc.navigationBar.barTintColor =[UIColor colorWithRed:5/255.0f green:6/255.0f blue:206/255.0f alpha:1.0f];
+                    uvc.navigationBar.alpha = 0.50;
+                    uvc.navigationBar.translucent = NO;
+
+                 
                     
                     //55acee
                     //
                     
-                    navigationController.navigationBar.barTintColor =[UIColor colorWithRed:85/255.0f green:172/255.0f blue:238/255.0f alpha:1.0f];
-                    
-                    navigationController.navigationBar.alpha = 0.50;
-                    
-                    navigationController.navigationBar.translucent = NO;
-                    
-                    
-                    self.window.rootViewController = navigationController;
+
+                    self.window.rootViewController = uvc;
                     
 
                 }];

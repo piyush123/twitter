@@ -33,23 +33,53 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
-        TwitterClient *client = [TwitterClient instance];
-        [client homeTimeline:^ (AFHTTPRequestOperation *operation, id responseObject){
-            //NSLog(@"tweets table view controller");
-            //NSLog(@"response: %@", responseObject);
-            self.tweets = responseObject;
-            NSLog(@"array count: %d", [self.tweets count]);
-            //NSLog(@"%@", self.tweets[1]);
-            [self.tweetsTable reloadData];
-            
-        } :^(AFHTTPRequestOperation *operation, NSError *error){
-            NSLog(@"response error: %@", error);
-        }];
-        
+     
         
     }
     return self;
+}
+
+- (id)initWithAPI:(NSString *)api {
+    
+    self = [super init];
+
+    if (self)
+    {
+    TwitterClient *client = [TwitterClient instance];
+        
+    if (api == @"tweets")
+    {
+        [client homeTimeline:^ (AFHTTPRequestOperation *operation, id responseObject){
+        //NSLog(@"tweets table view controller");
+        //NSLog(@"response: %@", responseObject);
+        self.tweets = responseObject;
+        NSLog(@"array count: %d", [self.tweets count]);
+        //NSLog(@"%@", self.tweets[1]);
+        [self.tweetsTable reloadData];
+        
+        } :^(AFHTTPRequestOperation *operation, NSError *error){
+        NSLog(@"response error: %@", error);
+        }];
+    }
+       else
+       {
+           [client mentionsTimeline:^ (AFHTTPRequestOperation *operation, id responseObject){
+               //NSLog(@"tweets table view controller");
+               //NSLog(@"response: %@", responseObject);
+               self.tweets = responseObject;
+               NSLog(@"array count: %d", [self.tweets count]);
+               //NSLog(@"%@", self.tweets[1]);
+               [self.tweetsTable reloadData];
+               
+           } :^(AFHTTPRequestOperation *operation, NSError *error){
+               NSLog(@"response error: %@", error);
+           }];
+       }
+        
+    }
+    return self;
+
+    
 }
 
 - (void)viewDidLoad
@@ -73,14 +103,31 @@
             target:self
             action:@selector(composeTweet:)];
     
+    NSLog(@"added tweetBtn");
+    
+    UIImage *menuImage = [UIImage imageNamed:@"menu.png"];
+    
+    UIButton *menu = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    menu.bounds = CGRectMake( 0, 0, 24, 24);
+    
+    [menu setImage:menuImage forState:UIControlStateNormal];
+    
+     UIBarButtonItem *menuBtn = [[UIBarButtonItem alloc] initWithCustomView:menu];
+    
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(composeTweet:)];
+   
+    self.navigationItem.leftBarButtonItem = menuBtn;
     self.navigationItem.rightBarButtonItem = tweetButton;
-
+    
+    
+    NSLog(@"added menuBtn");
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     [self.tweetsTable addSubview:self.refreshControl];
     
-
-
 }
 
 - (void) refreshView:(id)sender{
@@ -89,7 +136,10 @@
 }
 
 
-
+- (void)menuGo: (id) sender {
+    
+    NSLog(@"menu go");
+}
 - (void)composeTweet: (id) sender {
     
     ComposeViewController *composeViewController = [[ComposeViewController alloc] init];
