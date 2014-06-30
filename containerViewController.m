@@ -34,16 +34,36 @@
         // Custom initialization
         
         self.viewControllers = [[NSMutableArray alloc]init];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(myTestNotificationReceived:)
+                                                     name:@"myTestNotification"
+                                                   object:nil];
+        
     }
     return self;
 }
 
-- (IBAction)showMentions:(id)sender {
-    NSLog(@"hit the button");
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TestNotification" object:self];
-    
+- (void) myTestNotificationReceived:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:@"myTestNotification"])
+        
+    {
+        
+        NSLog (@"Successfully received the test notification!");
+        
+        UIView *superview = self.tweet_vc.view;
+        
+        [superview insertSubview:self.mentions_vc.view aboveSubview:self.tweet_vc.view];
+        
+        [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            
+        } completion:nil];
+        
+    }
 }
+
+
 
 
 - (IBAction)onPan:(UIPanGestureRecognizer *)sender {
@@ -140,15 +160,20 @@
     
     [self setTweetButton];
     [self setMenuButton];
+    [self setTestButton];
     
     self.navigationItem.rightBarButtonItem = self.tweetButton;
     self.navigationItem.leftBarButtonItem = self.menuButton;
    
+// mentions
+// menu
+// tweets
+    
+    [self.containerView addSubview:thirdview];  //mentions
 
-    [self.containerView addSubview:firstview];
-    [self.containerView addSubview:secondview];
-    [self.containerView addSubview:thirdview];
+    [self.containerView addSubview:firstview];  //menu
 
+    [self.containerView addSubview:secondview]; //tweets
 
     
 }
@@ -183,6 +208,20 @@
     self.menuButton = [[UIBarButtonItem alloc] initWithCustomView:menu];
 }
 
+-(void) setTestButton
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self action:@selector(showView:)
+                             forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Show View" forState:UIControlStateNormal];
+    button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+    [self.containerView addSubview:button];
+}
+
+-(void) showView:(id)sender
+{
+    NSLog(@"show view");
+}
 /*
 #pragma mark - Navigation
 
