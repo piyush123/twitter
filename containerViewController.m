@@ -146,8 +146,9 @@
    
 
     [self.containerView addSubview:firstview];
-    [self.containerView addSubview:thirdview];
     [self.containerView addSubview:secondview];
+    [self.containerView addSubview:thirdview];
+
 
     
 }
