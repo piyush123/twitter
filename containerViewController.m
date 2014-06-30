@@ -22,22 +22,37 @@
 @property (nonatomic, strong) UIViewController *mentions_vc;
 @property (nonatomic, strong) UIBarButtonItem *tweetButton;
 @property (nonatomic, strong) UIBarButtonItem *menuButton;
-
 @end
 
 @implementation containerViewController
+
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        
+        self.viewControllers = [[NSMutableArray alloc]init];
+    }
+    return self;
+}
+
+- (IBAction)showMentions:(id)sender {
+    NSLog(@"hit the button");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TestNotification" object:self];
+    
+}
+
+
 - (IBAction)onPan:(UIPanGestureRecognizer *)sender {
     NSLog(@"got pan");
 
-    
     UIView *childView = self.tweet_vc.view;
     
-    
-    
     CGPoint velocity = [sender velocityInView:self.view];
-    
-    
-    
+
     CGPoint translate = [sender translationInView:self.view];
     
     CGRect newFrame = childView.frame;
@@ -45,8 +60,6 @@
     newFrame.origin.x += translate.x;
     
     newFrame.origin.y += translate.y;
-    
-    
     
     //self.touched.frame = newFrame;
     
@@ -60,19 +73,12 @@
         
     } else if (sender.state == UIGestureRecognizerStateChanged) {
         
-        
-        
-        
-        
+   
     } else if (sender.state == UIGestureRecognizerStateEnded) {
-        
-
         
         //childView.frame = CGRectMake(childView.frame.size.width-kSlideMargin, 0, childView.frame.size.width, childView.frame.size.height);
         
         if (velocity.x >= 20) {
-            
-            
             
             [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:5 options:0 animations:^{
                 
@@ -81,8 +87,6 @@
                     //view.center = leftPoint;
                     
                     childView.frame = CGRectMake(childView.frame.size.width-kSlideMargin, 0, childView.frame.size.width, childView.frame.size.height);
-                    
-                    
                     
                 }
                 
@@ -109,16 +113,6 @@
 
 }
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-
-        self.viewControllers = [[NSMutableArray alloc]init];
-    }
-    return self;
-}
 
 - (void) addViewController:(UIViewController *)vc
 {
@@ -138,24 +132,26 @@
     self.mentions_vc = self.viewControllers[1];
     self.tweet_vc = self.viewControllers[2];
 
-    
     UIView *firstview = self.menu_vc.view;
     UIView *secondview = self.tweet_vc.view;
+    UIView *thirdview = self.mentions_vc.view;
     
     self.navigationController.navigationBar.barTintColor =[UIColor colorWithRed:85/255.0f green:172/255.0f blue:238/255.0f alpha:1.0f];
     
     [self setTweetButton];
     [self setMenuButton];
     
-    
     self.navigationItem.rightBarButtonItem = self.tweetButton;
-    
-    self.navigationItem.leftBarButtonItem = _menuButton;
-    self.navigationItem.rightBarButtonItem = _tweetButton;
+    self.navigationItem.leftBarButtonItem = self.menuButton;
+   
 
     [self.containerView addSubview:firstview];
+    [self.containerView addSubview:thirdview];
     [self.containerView addSubview:secondview];
+
+    
 }
+
 
 - (void)didReceiveMemoryWarning
 {

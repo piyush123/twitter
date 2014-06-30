@@ -10,6 +10,7 @@
 
 @interface containerViewController : UIViewController
 
+extern NSString * const containerViewMentionsNotification;
 
 -(void) addViewController:(UIViewController *)vc;
 @end

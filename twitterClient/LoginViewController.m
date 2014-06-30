@@ -42,9 +42,9 @@
         NSLog(@"current user %@", User.currentUser);
         [User checkCurrentUser:^{
             
-            TweetsViewController *tweets_vc = [[TweetsViewController alloc] initWithAPI:@""];
+            TweetsViewController *tweets_vc = [[TweetsViewController alloc] initWithAPI:@"tweets"];
             
-            TweetsViewController *mentions_vc = [[TweetsViewController alloc] init];
+            TweetsViewController *mentions_vc = [[TweetsViewController alloc] initWithAPI:@"mentions"];
             
             menuViewController  *menu_vc = [[menuViewController alloc] init];
             containerViewController  *container_vc = [[containerViewController alloc] init];

@@ -47,7 +47,7 @@
     {
     TwitterClient *client = [TwitterClient instance];
         
-    if (api == @"tweets")
+    if ([api  isEqual: @"tweets"])
     {
         [client homeTimeline:^ (AFHTTPRequestOperation *operation, id responseObject){
         //NSLog(@"tweets table view controller");

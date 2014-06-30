@@ -14,6 +14,17 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEc-ei-0pa">
+                    <rect key="frame" x="27" y="174" width="100" height="30"/>
+                    <state key="normal" title="showMentions">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="showMentions:" destination="-1" eventType="touchUpInside" id="AOs-1c-m3V"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -22,6 +33,7 @@
             <connections>
                 <outletCollection property="gestureRecognizers" destination="nE2-Wg-ddA" appends="YES" id="sGS-Fd-zd7"/>
             </connections>
+            <point key="canvasLocation" x="32" y="115"/>
         </view>
         <panGestureRecognizer minimumNumberOfTouches="1" id="nE2-Wg-ddA">
             <connections>
