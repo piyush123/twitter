@@ -91,7 +91,7 @@
         NSLog (@"Successfully received the test notification!");
         
         [self.mentions_vc.view removeFromSuperview];
-        [self.tweet_vc.view removeFromSuperview];
+        [self.profile_vc.view removeFromSuperview];
         
         [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
