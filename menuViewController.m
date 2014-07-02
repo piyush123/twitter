@@ -9,6 +9,7 @@
 #import "menuViewController.h"
 
 @interface menuViewController ()
+- (IBAction)menuButton:(id)sender;
 
 @end
 
@@ -46,4 +47,10 @@
 }
 */
 
+- (IBAction)menuButton:(id)sender {
+    NSLog(@"timeline");
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"myTestNotification"
+     object:self];
+}
 @end

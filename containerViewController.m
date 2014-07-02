@@ -138,6 +138,11 @@
 {
     [self.viewControllers addObject:vc];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(myTestNotificationReceived:)
+                                                 name:@"myTestNotification"
+                                               object:nil];
+    
     NSLog(@"vc %@", self.viewControllers);
 }
 
