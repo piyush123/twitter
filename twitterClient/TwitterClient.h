@@ -20,9 +20,13 @@
 - (AFHTTPRequestOperation *)mentionsTimeline:(void (^)(AFHTTPRequestOperation *operation, id response))success :(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 
+- (AFHTTPRequestOperation *)userProfile:(NSString *)parameter success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
-- (AFHTTPRequestOperation *)verifyCredentials:(void (^) (AFHTTPRequestOperation *operation, id responseObject))success
-                                                :(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
+
+- (AFHTTPRequestOperation *)verifyCredentials:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+
+- (AFHTTPRequestOperation *)userTimeLine:(void (^) (AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
 
 
 - (void)finishLoginWith:(NSString *)queryString withCompletion:(void (^) ())completion;

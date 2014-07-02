@@ -65,7 +65,7 @@ static NSString *storeKey = @"current_user";
         if (success) {
             success();
         }
-    } :^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"check user failure: %@", error.description);
         if (failure) {
             failure(error);

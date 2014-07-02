@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+@property NSString *userProfile;
+@property NSString *userName;
 
 @end
