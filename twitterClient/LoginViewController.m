@@ -10,6 +10,7 @@
 #import "TwitterClient.h"
 #import "User.h"
 #import "TweetsViewController.h"
+#import "ProfileViewController.h"
 
 
 #import "containerViewController.h"
@@ -42,34 +43,14 @@
         NSLog(@"current user %@", User.currentUser);
         [User checkCurrentUser:^{
             
-            TweetsViewController *tweets_vc = [[TweetsViewController alloc] initWithAPI:@"tweets"];
-            
-            TweetsViewController *mentions_vc = [[TweetsViewController alloc] initWithAPI:@"mentions"];
-            
-            menuViewController  *menu_vc = [[menuViewController alloc] init];
-            containerViewController  *container_vc = [[containerViewController alloc] init];
-            
-            [container_vc addViewController:menu_vc];
-            [container_vc addViewController:mentions_vc];
-            [container_vc addViewController:tweets_vc];
-
-            
-            UINavigationController *uvc = [[UINavigationController alloc] initWithRootViewController:container_vc];
-            
-            uvc.navigationBar.barTintColor =[UIColor colorWithRed:85/255.0f green:172/255.0f blue:238/255.0f alpha:1.0f];
-            uvc.navigationBar.alpha = 0.50;
-            uvc.navigationBar.translucent = NO;
-           
-            
-            //55acee
-            //
-            [self presentViewController:uvc animated:YES completion:nil];
+         
         } :^(NSError *error) {
             NSLog(@"don't have user token");
             [[TwitterClient instance] login];
         }];
     }
-
+    
+   
 }
 
 - (IBAction)twitterLogin:(id)sender

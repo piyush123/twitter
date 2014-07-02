@@ -10,9 +10,10 @@
 #import "LoginViewController.h"
 #import "TwitterClient.h"
 #import "TweetsViewController.h"
+#import "ProfileViewController.h"
 #import "NSURL+QueryString.h"
 
-#import "containerViewController.h"
+#import "ContainerViewController.h"
 #import "menuViewController.h"
 
 
@@ -23,7 +24,6 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    
     
     //self.window.rootViewController = [[LoginViewController alloc] init];
     
@@ -81,27 +81,33 @@
             NSDictionary *parameters = [url dictionaryFromQueryString];
             if (parameters[@"oauth_token"] && parameters[@"oauth_verifier"]) {
                 [[TwitterClient instance] finishLoginWith:url.query withCompletion:^{
-                    TweetsViewController *tweets_vc = [[TweetsViewController alloc] init];
+                    TweetsViewController *tweets_vc = [[TweetsViewController alloc] initWithAPI:@"tweets"];
+                    TweetsViewController *mentions_vc =
+                    [[TweetsViewController alloc]initWithAPI:@"mentions"];
+                    
+                    ProfileViewController *profile_vc =
+                    [[ProfileViewController alloc]init];
                     menuViewController  *menu_vc = [[menuViewController alloc] init];
-                    containerViewController  *container_vc = [[containerViewController alloc] init];
-                    
-                    [container_vc addViewController:menu_vc];
+                    ContainerViewController  *container_vc = [[ContainerViewController alloc] init];
+
+                    [container_vc addViewController:profile_vc];
                     [container_vc addViewController:tweets_vc];
-                    
-                    UINavigationController *uvc = [[UINavigationController alloc] initWithRootViewController:container_vc];
+                    [container_vc addViewController:menu_vc];
+                    [container_vc addViewController:mentions_vc];
+
+                    UINavigationController *uvc = [[UINavigationController alloc] initWithRootViewController:tweets_vc];
                     
                     uvc.navigationBar.barTintColor =[UIColor colorWithRed:5/255.0f green:6/255.0f blue:206/255.0f alpha:1.0f];
                     uvc.navigationBar.alpha = 0.50;
                     uvc.navigationBar.translucent = NO;
 
-                 
+                    [container_vc addViewController:uvc];
                     
                     //55acee
                     //
-                    
-
-                    self.window.rootViewController = uvc;
-                    
+                    NSLog(@"got here ");
+                    self.window.rootViewController = container_vc;
+                    NSLog(@"got to end ");
 
                 }];
             }

@@ -46,11 +46,26 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (IBAction)menuButton:(id)sender {
-    NSLog(@"timeline");
+- (IBAction)profileButton:(id)sender {
+    NSLog(@"profile");
     [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"myTestNotification"
+     postNotificationName:@"profile"
      object:self];
 }
+
+- (IBAction)menuButton:(id)sender {
+    NSLog(@"mentions");
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"mentions"
+     object:self];
+}
+- (IBAction)tweetsButton:(id)sender {
+    NSLog(@"tweets");
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"tweets"
+     object:self];
+    
+}
+
+
 @end

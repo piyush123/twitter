@@ -6,6 +6,7 @@
 //
 
 #import "TweetsViewController.h"
+#import "TwitterClient.h"
 #import "tweetCell.h"
 #import "Tweet.h"
 #import "TwitterClient.h"
@@ -19,6 +20,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tweetsTable;
 
+@property TwitterClient *client;
+
 @property (strong, nonatomic) NSMutableArray *tweets;
 
 @property (strong, nonatomic) Tweet *tweetModel;
@@ -31,9 +34,10 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
         // Custom initialization
-     
+        self.client = [TwitterClient instance];
         
     }
     return self;
