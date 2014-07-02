@@ -15,15 +15,20 @@
 
 
 @interface ProfileViewController ()
-@property TwitterClient *client;
-@property UserStats *userStat;
-@property (nonatomic,strong) NSMutableArray *tweetsArray;
-@property (weak, nonatomic) IBOutlet UILabel *tweetCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *followersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *followersLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tweetCountLabel;
+
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UITableView *displayView;
+
+@property TwitterClient *client;
+@property UserStats *userStat;
+@property (nonatomic,strong) NSMutableArray *tweetsArray;
+
+
 @property Tweet *tweetModel;
 @end
 
@@ -31,7 +36,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"profileView" bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -43,6 +48,37 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    
+    if([self.userProfile isEqual:@"userprofile"]){
+        [self.client userProfile:self.userName  success:^(AFHTTPRequestOperation *operation, id responseObject){
+            
+            //NSLog(@"response: %@", responseObject);
+            //[self dismissViewControllerAnimated:YES completion:nil];
+            self.tweetsArray = responseObject;
+            UserStats *userStat = [MTLJSONAdapter modelOfClass:UserStats.class fromJSONDictionary:self.tweetsArray[0] error:NULL];
+            
+            self.tweetCountLabel.text =  [NSString stringWithFormat:@"%@", userStat.tweetCount];
+            self.followersLabel.text = [NSString stringWithFormat:@"%@", userStat.followersCount];
+            self.followingLabel.text = [NSString stringWithFormat:@"%@", userStat.followingCount];
+            
+            NSString *url = [userStat.profileImageURL stringByReplacingOccurrencesOfString:@"_normal" withString:@"_bigger"];
+            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+            //NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:userStat.profileImageURL]];
+            self.profileImage.image =[UIImage imageWithData:imageData];
+            
+            NSData *backgroundImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:userStat.backgroundImageURL]];
+            self.backgroundImage.image =[UIImage imageWithData:backgroundImageData];
+            [self.displayView reloadData];
+            
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+            NSLog(@"response error: %@", error);
+            
+        }];
+    }
+    else
+    {
+
     [self.client userTimeLine:^ (AFHTTPRequestOperation *operation, id responseObject){
         //NSLog(@"response: %@", responseObject);
         self.tweetsArray = responseObject;
@@ -65,7 +101,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         NSLog(@"response error: %@", error);
     }];
-
+    };
 
 
 self.displayView.rowHeight = 120;

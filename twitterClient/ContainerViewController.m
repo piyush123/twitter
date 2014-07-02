@@ -100,7 +100,6 @@
         
     }
     
-    
 }
 
 - (void) profileReceived:(NSNotification *) notification
@@ -110,7 +109,7 @@
     {
         
         NSLog (@"Successfully received the test notification!");
-        
+        [self.mentions_vc.view removeFromSuperview];
         [self.tweet_vc.view addSubview:self.profile_vc.view];
         
         [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseIn animations:^{
