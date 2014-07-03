@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1705436D1964D3DC001AADF6 /* pshah.png in Resources */ = {isa = PBXBuildFile; fileRef = 1705436C1964D3DC001AADF6 /* pshah.png */; };
 		17223FB5195CD79A00D2C0C1 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17223FB3195CD79A00D2C0C1 /* ComposeViewController.m */; };
 		17223FB6195CD79A00D2C0C1 /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17223FB4195CD79A00D2C0C1 /* ComposeViewController.xib */; };
 		17223FB9195CDC8000D2C0C1 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 17223FB8195CDC8000D2C0C1 /* Utils.m */; };
@@ -26,7 +27,6 @@
 		178D559319647BF20028FC51 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178D559119647BF20028FC51 /* ContainerViewController.m */; };
 		178D559419647BF20028FC51 /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 178D559219647BF20028FC51 /* ContainerViewController.xib */; };
 		178D5598196484F90028FC51 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178D5596196484F90028FC51 /* ProfileViewController.m */; };
-		178D5599196484F90028FC51 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 178D5597196484F90028FC51 /* ProfileViewController.xib */; };
 		178D559C196497010028FC51 /* UserStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 178D559B196497010028FC51 /* UserStats.m */; };
 		178D55A31964C1500028FC51 /* profileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 178D55A21964C1500028FC51 /* profileView.xib */; };
 		178D55A51964C7780028FC51 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 178D55A41964C7780028FC51 /* background.png */; };
@@ -68,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		0B2F26CEFE404ED187EA0517 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		1705436C1964D3DC001AADF6 /* pshah.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pshah.png; sourceTree = "<group>"; };
 		17223FB2195CD79A00D2C0C1 /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		17223FB3195CD79A00D2C0C1 /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		17223FB4195CD79A00D2C0C1 /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeViewController.xib; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		178D559219647BF20028FC51 /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
 		178D5595196484F90028FC51 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		178D5596196484F90028FC51 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		178D5597196484F90028FC51 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		178D559A196497010028FC51 /* UserStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserStats.h; sourceTree = "<group>"; };
 		178D559B196497010028FC51 /* UserStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStats.m; sourceTree = "<group>"; };
 		178D55A21964C1500028FC51 /* profileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = profileView.xib; sourceTree = "<group>"; };
@@ -291,8 +291,8 @@
 				17BA3F4D1959FAC900C6B8C7 /* LoginViewController.m */,
 				178D5595196484F90028FC51 /* ProfileViewController.h */,
 				178D5596196484F90028FC51 /* ProfileViewController.m */,
-				178D5597196484F90028FC51 /* ProfileViewController.xib */,
 				178D55A21964C1500028FC51 /* profileView.xib */,
+				1705436C1964D3DC001AADF6 /* pshah.png */,
 				178D55A61964C78A0028FC51 /* twitter_bird.png */,
 			);
 			name = "View Controllers";
@@ -413,6 +413,7 @@
 			files = (
 				17223FBE195D1EFB00D2C0C1 /* favorite_hover.png in Resources */,
 				17223FBF195D1EFB00D2C0C1 /* favorite_on.png in Resources */,
+				1705436D1964D3DC001AADF6 /* pshah.png in Resources */,
 				172AAB6C196121AE00ABE85F /* menu.png in Resources */,
 				17223FC6195D1F0600D2C0C1 /* reply_hover.png in Resources */,
 				178D55A31964C1500028FC51 /* profileView.xib in Resources */,
@@ -432,7 +433,6 @@
 				17BA3F67195A2C1200C6B8C7 /* tweetCell.xib in Resources */,
 				17223FC8195D1F0600D2C0C1 /* retweet_hover.png in Resources */,
 				17223FC9195D1F0600D2C0C1 /* retweet_on.png in Resources */,
-				178D5599196484F90028FC51 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
