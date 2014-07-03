@@ -9,12 +9,16 @@
 #import "ProfileViewController.h"
 #import "TwitterClient.h"
 #import "UserStats.h"
+#import "User.h"
+#import "Utils.h"
 #import "Tweet.h"
 #import <UIImageView+AFNetworking.h>
 #import "tweetCell.h"
 
 
 @interface ProfileViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *screenName;
+@property (weak, nonatomic) IBOutlet UILabel *Name;
 @property (weak, nonatomic) IBOutlet UILabel *followingLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *followersLabel;
@@ -47,6 +51,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    User *currentUser = [User currentUser];
+    NSLog(@"current user %@", currentUser);
+    [Utils setImageWithUrl:[[User currentUser] profile_image_url] inImageView:self.profileImage];
+    
+    self.Name.text = currentUser.name;
+    self.screenName.text = currentUser.screenName;
     
     
     if([self.userProfile isEqual:@"userprofile"]){

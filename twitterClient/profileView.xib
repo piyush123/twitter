@@ -6,11 +6,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
             <connections>
+                <outlet property="Name" destination="7fR-P0-1gN" id="Dp2-RT-Byb"/>
                 <outlet property="backgroundImage" destination="b2L-en-oyF" id="224-1e-nnk"/>
                 <outlet property="displayView" destination="hdc-1Q-PIS" id="gxI-F5-vgS"/>
                 <outlet property="followersLabel" destination="NlQ-CF-TGC" id="lmA-Fp-gdc"/>
                 <outlet property="followingLabel" destination="hI4-7q-AR5" id="sr7-QX-J8h"/>
                 <outlet property="profileImage" destination="3Uz-Sd-Sbc" id="Scw-cO-bYX"/>
+                <outlet property="screenName" destination="hUn-lG-DzV" id="LYF-hB-4vY"/>
                 <outlet property="tweetCountLabel" destination="8Em-1j-yeN" id="5wc-YU-FRA"/>
                 <outlet property="view" destination="L2x-FI-aRb" id="J70-Oz-cui"/>
             </connections>
@@ -56,13 +58,26 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="b2L-en-oyF">
                     <rect key="frame" x="0.0" y="0.0" width="325" height="191"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pshah.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Uz-Sd-Sbc">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="twitter_bird.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Uz-Sd-Sbc">
                     <rect key="frame" x="130" y="71" width="50" height="50"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hdc-1Q-PIS">
                     <rect key="frame" x="0.0" y="264" width="320" height="304"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="piyush shah " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fR-P0-1gN" userLabel="Label - Name">
+                    <rect key="frame" x="134" y="139" width="106" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@pshah" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUn-lG-DzV" userLabel="Label - ScreenName">
+                    <rect key="frame" x="134" y="162" width="106" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -71,6 +86,6 @@
     </objects>
     <resources>
         <image name="background.png" width="2247" height="190"/>
-        <image name="pshah.png" width="73" height="73"/>
+        <image name="twitter_bird.png" width="44" height="35"/>
     </resources>
 </document>
